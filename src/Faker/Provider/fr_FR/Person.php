@@ -93,7 +93,7 @@ class Person extends \Faker\Provider\Person
             sprintf('%02d', $this->numberBetween(1, 12));
 
         // Department
-        $department = key(Address::department());
+        $department = current(Address::department());
         $nir .= $department;
 
         // Town number, depends on department length
