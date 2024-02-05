@@ -18,16 +18,28 @@ final class PhoneNumberTest extends TestCase
         self::assertMatchesRegularExpression('/^(\+33 |\+33 \(0\)|0)(6|7)(?:(\s{1})?\d{2}){4}$/', $mobileNumber);
     }
 
+    public function testMobileNumber06Format(): void
+    {
+        $mobileNumberFormat = $this->faker->phoneNumber06();
+        self::assertMatchesRegularExpression('/^([0-24-8]\d|3[0-8]|9[589])(\d{2}){3}$/', $mobileNumberFormat);
+    }
+
+    public function testMobileNumber06WithSeparatorFormat(): void
+    {
+        $mobileNumberFormat = $this->faker->phoneNumber06WithSeparator();
+        self::assertMatchesRegularExpression('/^([0-24-8]\d|3[0-8]|9[589])( \d{2}){3}$/', $mobileNumberFormat);
+    }
+
     public function testMobileNumber07Format(): void
     {
         $mobileNumberFormat = $this->faker->phoneNumber07();
-        self::assertMatchesRegularExpression('/^([3-9]{1})\d(\d{2}){3}$/', $mobileNumberFormat);
+        self::assertMatchesRegularExpression('/^([3-8]{1})\d(\d{2}){3}$/', $mobileNumberFormat);
     }
 
     public function testMobileNumber07WithSeparatorFormat(): void
     {
         $mobileNumberFormat = $this->faker->phoneNumber07WithSeparator();
-        self::assertMatchesRegularExpression('/^([3-9]{1})\d( \d{2}){3}$/', $mobileNumberFormat);
+        self::assertMatchesRegularExpression('/^([3-8]{1})\d( \d{2}){3}$/', $mobileNumberFormat);
     }
 
     public function testServiceNumber(): void
